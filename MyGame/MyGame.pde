@@ -51,27 +51,23 @@ void draw()
   if(frameCount % (60*4) == 0)
   {
     println("new enemy");
-    //Enemy e = new Grunt();
-    enemies.add(new Grunt());
-    enemyExist = true;
+    Enemy e = new Grunt();
+    enemies.add(e);
   }//end if()
   
-  if(enemyExist)
+  //for loop to update position and display enemies
+  for(int i = 0; i < enemies.size(); i++)
   {
-    //for loop to update position and display enemies
-    for(int i = 0; i < enemies.size(); i++)
+    enemies.get(i).update();
+    enemies.get(i).display();
+    
+    //if statement to remove an enemy from the list when it dies
+    if(enemies.get(i).alive == false)
     {
-      enemies.get(i).update();
-      enemies.get(i).display();
-      
-      //if statement to remove an enemy from the list when it dies
-      if(enemies.get(i).alive == false)
-      {
-        enemies.remove(i);
-        println("enemy " + i + " removed");
-      }//end if()
-    }//end for()
-  }//end if()
+      enemies.remove(i);
+      println("enemy " + i + " removed");
+    }//end if()
+  }//end for()
 }//end draw()
 
 void keyPressed()

@@ -26,7 +26,7 @@ class Bullet
   {
     pushMatrix();
     translate(pos.x, pos.y);
-    line(0, 5, 0, -5);
+    line(17, 5, 17, -5);
     popMatrix();
   }//end display()
 }//end Bulet
