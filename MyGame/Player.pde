@@ -10,10 +10,13 @@ class Player
   char button2;
   int index;
   color colour;
+  int h, w;
     
   Player()
   {
-    pos = new PVector(width / 2, height / 2);
+    pos = new PVector();
+    h = 40;
+    w = 35;
   }
   
   Player(int index, color colour, char up, char down, char left, char right, char start, char button1, char button2)
@@ -46,21 +49,21 @@ class Player
   
   void update()
   {
-    if (checkKey(up))
+    if (checkKey(up) && pos.y > 0)
     {
-      pos.y -= 1;
+      pos.y -= speed;
     }
-    if (checkKey(down))
+    if (checkKey(down) && pos.y < height - h)
     {
-      pos.y += 1;
+      pos.y += speed;
     }
-    if (checkKey(left))
+    if (checkKey(left) && pos.x > 0)
     {
-      pos.x -= 1;
+      pos.x -= speed;
     }    
-    if (checkKey(right))
+    if (checkKey(right) && pos.x < width - w)
     {
-      pos.x += 1;
+      pos.x += speed;
     }
     if (checkKey(start))
     {
@@ -69,17 +72,20 @@ class Player
     if (checkKey(button1))
     {
       println("Player " + index + " button 1");
+      Bullet b = new Bullet();
+      b.pos = pos.get();
+      bullets.add(b);
     }
     if (checkKey(button2))
     {
       println("Player " + index + " butt2");
-    }    
+    }
   }
   
   void display()
   {    
     stroke(colour);
     fill(colour);    
-    rect(pos.x, pos.y, 20, 20);
+    rect(pos.x, pos.y, w, h);
   }  
 }
