@@ -115,6 +115,9 @@ class Player
       bullets.add(b);
       shootTime = -10;
       canShoot = false;
+      player.rewind();
+      player.play();
+      
     }
     if (checkKey(button2))
     {

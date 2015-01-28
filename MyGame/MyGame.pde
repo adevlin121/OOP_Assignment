@@ -23,6 +23,13 @@ boolean flash;
 PImage grunt;
 PImage speeder;
 PImage tank;
+import ddf.minim.*;
+import ddf.minim.signals.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+Minim minim;
+AudioPlayer player;
+AudioInput input;
 
 void setup()
 {
@@ -34,6 +41,9 @@ void setup()
   grunt = loadImage("grunt.png");
   speeder = loadImage("speeder.png");
   tank = loadImage("tank.png");
+  minim = new Minim(this);
+  player = minim.loadFile("laser.mp3");
+  input = minim.getLineIn();
 }
 
 void draw()
