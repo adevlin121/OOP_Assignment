@@ -26,7 +26,7 @@ class Bullet
     stroke(255, 0, 0);
     pushMatrix();
     translate(pos.x, pos.y);
-    line(17, 5, 17, -5);
+    line(0, 10, 0, 0);
     popMatrix();
   }//end display()
 }//end Bulet

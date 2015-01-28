@@ -1,17 +1,18 @@
-class Enemy
+class Powerup
 {
-  PVector pos, vel;
-  int hp;
-  float theta;
+  PVector pos;
+  PVector vel;
   boolean alive;
+  boolean getPower;
   int w, h;
   
-  Enemy()
+  Powerup()
   {
     pos = new PVector();
     vel = new PVector();
     alive = true;
-  }//end Enemy()
+    getPower = false;
+  }//end Powerup()
   
   void update()
   {
@@ -20,5 +21,4 @@ class Enemy
   void display()
   {
   }
-  
-}//end Enemy
+}//end Powerup
