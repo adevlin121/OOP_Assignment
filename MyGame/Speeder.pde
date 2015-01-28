@@ -25,7 +25,7 @@ class Speeder extends Enemy
     }//end if()
     
     //timer to make the speeder pause before moving
-    if(gofastTime/60 > 2)
+    if(gofastTime/60 > 1)
     {
       pos.add(vel);
     }
@@ -37,7 +37,8 @@ class Speeder extends Enemy
     fill(200, 70, 70);
     pushMatrix();
     translate(pos.x, pos.y);
-    rect(0, 0, w, h);
+    speeder.resize(w, h);
+    image(speeder, 0, 0);
     popMatrix();
   }//end display()
 }//end Grunt

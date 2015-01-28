@@ -20,6 +20,8 @@ int killcount = 0;
 float diff = 1f;
 int splash;
 boolean flash;
+PImage grunt;
+PImage speeder;
 
 void setup()
 {
@@ -28,6 +30,8 @@ void setup()
   rectMode(CORNER);
   splash = 0;
   flash = true;
+  grunt = loadImage("grunt.png");
+  speeder = loadImage("speeder.png");
 }
 
 void draw()
