@@ -37,7 +37,7 @@ class Untouch extends Powerup
     }//end iof()
     else
     {
-      fill(0, 0, 255, 100);
+      fill(0, 0, 255, 10);
     }
     rect(pos.x, pos.y, w, h);
   }//end display()

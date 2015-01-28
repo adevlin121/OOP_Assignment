@@ -22,6 +22,7 @@ int splash;
 boolean flash;
 PImage grunt;
 PImage speeder;
+PImage tank;
 
 void setup()
 {
@@ -32,6 +33,7 @@ void setup()
   flash = true;
   grunt = loadImage("grunt.png");
   speeder = loadImage("speeder.png");
+  tank = loadImage("tank.png");
 }
 
 void draw()
@@ -57,7 +59,8 @@ void draw()
     text("Shoot enemies: ", 350, 600);
     stroke(255);
     fill(70, 70, 70);
-    rect(520, 570, 50, 50);
+    speeder.resize(50, 50);
+    image(speeder, 520, 570);
     
     fill(255);
     text("Extra life:", 650, 600);
@@ -69,7 +72,7 @@ void draw()
     text("Invincible:", 830, 600);
     if(flash)
     {
-      fill(0, 0, 255, 100);
+      fill(0, 0, 255, 10);
     }
     else
     {
@@ -144,6 +147,14 @@ void draw()
     {
       //println("new enemy");
       Enemy e = new Speeder();
+      enemies.add(e);
+    }//end if()
+    
+    //if statement to create new tank
+    if(frameCount % (60*15) == 0 && frameCount > 0 && score > 50)
+    {
+      //println("new enemy");
+      Enemy e = new Tank();
       enemies.add(e);
     }//end if()
     
