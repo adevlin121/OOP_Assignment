@@ -3,13 +3,12 @@ class Bullet
   PVector pos;
   PVector vel;
   boolean alive;
-  color colour;
   
   Bullet()
   {
     alive = true;
     pos = new PVector();
-    vel = new PVector(0, speed*(-2));
+    vel = new PVector(0, speed*(-3));
   }//end Bullet()
   
   void update()
@@ -24,6 +23,7 @@ class Bullet
   
   void display()
   {
+    stroke(255, 0, 0);
     pushMatrix();
     translate(pos.x, pos.y);
     line(17, 5, 17, -5);

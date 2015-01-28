@@ -11,4 +11,13 @@ class Enemy
     vel = new PVector();
     alive = true;
   }//end Enemy()
+  
+  update()
+  {
+  }
+  
+  display()
+  {
+  }
+  
 }//end Enemy

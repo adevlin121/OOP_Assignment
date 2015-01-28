@@ -12,9 +12,8 @@ ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 boolean[] keys = new boolean[526];
 int w = 1280;
 int h = 900;
-int speed = 5;
+int speed = 3;
 int px, py;
-boolean enemyExist;
 
 void setup()
 {
@@ -25,6 +24,7 @@ void setup()
 void draw()
 {
   background(0);
+  //bgupdate();
   
   //for loop that calls the player methods to update the location and display it to the screen
   for(Player player:players)
@@ -68,6 +68,22 @@ void draw()
       println("enemy " + i + " removed");
     }//end if()
   }//end for()
+  
+  //collision detecting nested for loops
+  for(int i=0; i<enemies.size(); i++)
+  {
+    for(int j=0; j<bullets.size(); j++)
+    {
+      if((enemies.get(i).pos.y + enemies.get(i).h) >= bullets.get(j).pos.y &&
+          enemies.get(i).pos.x <= bullets.get(j).pos.x &&
+          (enemies.get(i).pos.x + enemies.get(i).w) >= bullets.get(j).pos.x)
+      {
+        println("enemy hit");
+        enemies.get(i).hp--;
+        bullets.get(j).alive = false;
+      }//end if()
+    }//end inner for()
+  }//end outer for()
 }//end draw()
 
 void keyPressed()
@@ -117,10 +133,7 @@ void setUpPlayerControllers()
   for(int i = 0 ; i < children.length ; i ++)  
   {
     XML playerXML = children[i];
-    Player p = new Player(
-            i
-            , color(random(0, 255), random(0, 255), random(0, 255))
-            , playerXML);
+    Player p = new Player(i, playerXML);
     int x = (i + 1) * gap;
     p.pos.x = x;
     p.pos.y = (h/20) * 19;
